@@ -18,7 +18,7 @@ typedef struct name {
 //;
 int main() {
     FILE *fp = fopen("danhsachsinhvien.txt", "wt");
-
+int n=11;
     struct name kkk;
     int i;
     int a;
@@ -30,11 +30,12 @@ int main() {
             case 1 : {
                 printf("bạn chonj nhập thông tin sinh viên\n ");
                 for (int i = 1; i < 3; ++i) {
-                    printf("nhập mã thí sinh thứ %d\n", i);
-                    scanf("%s", &kkk.mathisinh);
-                    printf("vui lòng nhập số điện thoại\n");
+                    printf("nhập mã thí sinh thứ %d\n", i);fflush(stdin);
+                    getchar();
+                    gets( &kkk.mathisinh);
+                    printf("vui lòng nhập số điện thoại\n");fflush(stdin);
                     scanf("%d", &kkk.sodienthoai);
-                    printf("vui lòng điền tên vào đây :\n");
+                    printf("vui lòng điền tên vào đây :\n");fflush(stdin);
                     getchar();
                     gets(kkk.tenthisinh);
                     printf("tên thí sinh là %s\n", kkk.tenthisinh);
@@ -45,11 +46,22 @@ int main() {
                 printf("xin lỗi quý khách , danh sách đầy rồi (TỐI ĐA 10 THÍ SINH) , chúng tôi sẽ đưa bạn về menu \n");
                 break;
             case 2 : {
-                printf("%-10s%-20s%-10s%-20s%-10s%-20s", "", "Mã sinh viên", "|", "Tên sinh viên", "|",
-                       "Điện thoại\n");
-                break;
-            }
-            case 3: {
+
+                printf("%-10s%-20s%-10s%-20s%-10s%-20s", "", "Mã sinh viên", "|", "Tên sinh viên", "|", "Điện thoại\n");
+
+
+            }break;
+            case 3: {  FILE *fp = fopen("danhsachsinhvien.txt", "w+");
+                struct name danhsach;
+
+                strcpy(danhsach.mathisinh, "");
+                strcpy(danhsach.tenthisinh, "");
+                strcpy(danhsach.sodienthoai, "");
+
+                printf("Tên sinh viên là: %d\n",danhsach.tenthisinh);
+                printf("Mã sinh viên là: %d\n", danhsach.mathisinh);
+                printf("Số điện thoại của sinh viên là: %d",danhsach.sodienthoai);
+fclose(fp);
 
             }
 
@@ -59,6 +71,7 @@ int main() {
                 if (strcmp(kkk.username, "\n") == 0) {
                     break;
                 }
+                default:  printf("Bạn đã nhập sai vui lòng nhập từ 1-5.\n");
 
             }
         }
